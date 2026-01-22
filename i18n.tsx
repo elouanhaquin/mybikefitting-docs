@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { trackLanguageChange } from '@/lib/analytics';
 
-export type Language = 'fr' | 'en' | 'es';
+export type Language = 'fr' | 'en' | 'es' | 'de';
 
 export const translations = {
   fr: {
@@ -1578,6 +1578,793 @@ export const translations = {
     },
   },
 
+  de: {
+    // Common
+    loading: 'Wird geladen...',
+    back: 'Zurück',
+    next: 'Weiter',
+    previous: 'Vorherige',
+    skip: 'Überspringen',
+    retry: 'Erneut versuchen',
+    choose: 'Auswählen',
+    start: 'Start',
+    finish: 'Fertigstellen',
+    cancel: 'Abbrechen',
+    recommended: 'Empfohlen',
+    duration: 'Dauer',
+
+    // Breadcrumb
+    breadcrumb: {
+      evaluation: 'Analyse',
+      quiz: 'Fragebogen',
+      mobility: 'Mobilität',
+      analysis: 'Analyse',
+      recommendations: 'Ergebnisse',
+    },
+
+    // Home page
+    home: {
+      hero: {
+        badge: 'Kostenloses Bikefitting · 5 Minuten · Ohne Anmeldung',
+        titleLine1: 'Kostenloses Online',
+        titleLine2: 'Bikefitting',
+        description: 'KI-gestützte Bikefitting-Analyse per Webcam, Video oder Foto. Erkenne Ursachen für Schmerzen beim Radfahren (Knie, Rücken, Nacken) und erhalte Empfehlungen zu Sattelhöhe, Sattel-Offset und Lenkerposition.',
+        cta: 'Kostenloses Bikefitting starten',
+        resumeAnalysis: 'Meine Analyse fortsetzen',
+        howItWorks: 'So funktioniert es',
+        analysisChoice: {
+          title: 'Analyse existiert bereits',
+          description: 'Du hast bereits eine Analyse durchgeführt. Was möchtest du tun?',
+          viewResults: 'Meine Ergebnisse ansehen',
+          startNew: 'Neue Analyse',
+        },
+      },
+      preview: {
+        analyzing: 'Analyse läuft...',
+        kneeExtension: 'Kniestreckung',
+        hipAngle: 'Hüftwinkel',
+        backAngle: 'Rückenwinkel',
+        armAngle: 'Armwinkel',
+        recommendation: 'Empfehlung',
+        saddleAdjust: 'Sattel +2 cm',
+      },
+      painPoints: {
+        title: 'Schmerzen beim Radfahren? Du bist nicht allein',
+        knee: { title: 'Knieschmerzen beim Radfahren', desc: 'Ursache Nr. 1: falsche Sattelhöhe. Unsere Bikefitting-Analyse erkennt dieses Problem.' },
+        back: { title: 'Rückenschmerzen beim Radfahren', desc: 'Oft verursacht durch falsche Lenkerposition oder Sattel-Offset.' },
+        fatigue: { title: 'Taubheitsgefühl in den Händen', desc: 'Zu viel Gewicht vorne? Dein Rückenwinkel und die Vorbaulänge sollten geprüft werden.' },
+        conclusion: 'In 80% der Fälle ist es ein',
+        position: 'Bikefitting-Problem',
+      },
+      steps: {
+        title: '3 Schritte, 5 Minuten',
+        subtitle: 'Kein Termin und keine spezielle Ausrüstung nötig',
+        step1: { title: 'Fragebogen', desc: 'Erzähl uns von deiner Fahrpraxis: Rennrad, MTB, Gravel? Deine Schmerzen und deine Ziele.' },
+        step2: { title: 'Aufnahme', desc: 'Live-Webcam, Video-Upload oder ein einfaches Foto - wähle deine Methode. Unsere KI analysiert deine Winkel in Sekunden.' },
+        step3: { title: 'Anpassungen', desc: 'Sattelhöhe, Sattel-Offset, Lenker... Erhalte detaillierte Empfehlungen mit Zahlen.' },
+      },
+      angles: {
+        title: 'Die Winkel, die zählen',
+        description: 'Unsere Analyse misst die 4 Schlüsselwinkel für eine optimale Position. Jeder Grad zählt für deinen Komfort und deine Leistung.',
+        realtime: 'Analyse in Echtzeit',
+        knee: { label: 'Kniestreckung', range: '140-150°', tip: 'Am unteren Totpunkt' },
+        hip: { label: 'Hüftwinkel', range: '55-70°', tip: 'Beckenöffnung' },
+        back: { label: 'Rückenwinkel', range: '35-50°', tip: 'Je nach Fahrstil' },
+        arm: { label: 'Armwinkel', range: '150-165°', tip: 'Leicht gebeugt' },
+      },
+      cycling: {
+        title: 'Für alle Radfahrer',
+        types: ['Rennrad', 'MTB', 'Gravel', 'Triathlon', 'Stadt', 'Rollentrainer'],
+      },
+      faq: {
+        title: 'Häufige Fragen',
+        q1: { q: 'Ist es wirklich kostenlos?', a: 'Ja, 100% kostenlos. Kein Konto, keine Kreditkarte. Deine Daten bleiben auf deinem Gerät.' },
+        q2: { q: 'Was brauche ich?', a: 'Einen Computer oder ein Smartphone und dein Fahrrad. Nutze die Live-Webcam, lade ein Video hoch oder mache ein einfaches Profilfoto (rechte Seite). Ideal auf dem Rollentrainer.' },
+        q3: { q: 'Ist es so zuverlässig wie ein Profi-Bikefitter?', a: 'Es ist eine sehr gute erste Analyse. Bei komplexen Problemen oder anhaltenden Schmerzen ist ein Profi weiterhin empfohlen. MyBikeFitting gibt dir eine solide Grundlage.' },
+        q4: { q: 'Mit welchem Fahrradtyp funktioniert es?', a: 'Rennrad, MTB, Gravel, Stadt, Triathlon... Die Analyse funktioniert mit allen Radtypen.' },
+      },
+      story: {
+        title: 'Warum ich MyBikeFitting gegründet habe',
+        paragraph1: 'Nach Monaten mit Knieschmerzen bei jeder Ausfahrt suchte ich nach Lösungen. Termine bei Bikefittern waren teuer und schwer zu bekommen.',
+        paragraph2: 'Ich verbrachte Stunden auf YouTube und lernte, meinen Sattel einzustellen. Versuch, Fehler, Versuch... bis ich die richtige Position fand.',
+        paragraph3: 'Heute ist diese Erfahrung automatisiert. Die KI erledigt in 5 Minuten, wofür ich Wochen brauchte.',
+        signature: 'Elouan',
+        role: 'Radfahrer & Ersteller von MyBikeFitting',
+      },
+      cta: {
+        title: 'Bereit für deine nächste Ausfahrt?',
+        description: '5 Minuten, um deine Position zu optimieren.',
+        description2: 'Stunden zusätzlicher Komfort auf dem Rad.',
+        button: 'Kostenlose Analyse starten',
+      },
+      privacy: {
+        title: 'Deine Daten bleiben privat',
+        subtitle: '100% lokale Verarbeitung, keine Datenübertragung',
+        items: {
+          local: {
+            title: 'Lokale Verarbeitung',
+            desc: 'Dein Video wird direkt auf deinem Gerät analysiert',
+          },
+          noUpload: {
+            title: 'Kein Upload',
+            desc: 'Deine Bilder und Videos verlassen nie deinen Browser',
+          },
+        },
+      },
+      stats: {
+        analyses: 'Analysen durchgeführt',
+        rating: 'Durchschnittsbewertung',
+        reviews: 'Bewertungen',
+      },
+      captureGuide: {
+        title: 'So gelingt die Aufnahme',
+        subtitle: 'Befolge diese Tipps für eine genaue Analyse',
+        tips: {
+          side: {
+            title: 'Seitenansicht',
+            desc: 'Positioniere die Kamera rechtwinklig zum Fahrrad auf Sattelhöhe. Die rechte Seite (Kettenblatt sichtbar) ist ideal.',
+          },
+          lighting: {
+            title: 'Gute Beleuchtung',
+            desc: 'Nutze Tageslicht oder gleichmäßige Beleuchtung. Vermeide Gegenlicht und harte Schatten.',
+          },
+          clothing: {
+            title: 'Eng anliegende Kleidung',
+            desc: 'Trage enganliegende Kleidung (Radhose, Trikot) für präzise Gelenkerkennung.',
+          },
+          distance: {
+            title: 'Passender Abstand',
+            desc: 'Fahrrad und Fahrer sollten komplett sichtbar sein, mit etwas Rand.',
+          },
+          pedal: {
+            title: 'Pedalposition',
+            desc: 'Für die Analyse: Pedal am unteren Totpunkt (6 Uhr). Dort wird die Kniestreckung gemessen.',
+          },
+          stable: {
+            title: 'Stabiler Stand',
+            desc: 'Nutze nach Möglichkeit einen Rollentrainer. Alternativ an eine Wand lehnen oder Hilfe holen.',
+          },
+        },
+      },
+      methodology: {
+        title: 'Wissenschaftliche Methodik',
+        subtitle: 'Unsere Winkelbereiche basieren auf wissenschaftlicher Literatur und professionellen Bikefitting-Standards',
+        angles: {
+          knee: {
+            title: 'Kniestreckung (140-150°)',
+            desc: 'Am unteren Totpunkt gemessen bestimmt dieser Winkel die optimale Sattelhöhe. Die Holmes-Methode empfiehlt 25-35° Beugung gegenüber der vollständigen Streckung.',
+            consequence: 'Zu niedrig = Knieschmerzen, zu hoch = Becken kippt',
+          },
+          hip: {
+            title: 'Hüftwinkel (55-70°)',
+            desc: 'Die minimale Öffnung zwischen Oberschenkel und Oberkörper am oberen Totpunkt. Dieser Winkel beeinflusst Komfort und Leistung.',
+            consequence: 'Zu geschlossen = Kompression der Iliakalarterie, eingeschränkte Atmung',
+          },
+          back: {
+            title: 'Rückenneigung (35-50°)',
+            desc: 'Der Winkel zwischen Rücken und Horizontalen variiert je nach Fahrstil: 40-50° für Ausdauer, 30-45° für Rennrad-Performance.',
+            consequence: 'Niedrigere Winkel sind aerodynamischer, aber anspruchsvoller',
+          },
+          arm: {
+            title: 'Armwinkel (150-165°)',
+            desc: 'Leicht gebeugte Arme (~20° Beugung) dämpfen Vibrationen und halten die Schultern entspannt.',
+            consequence: 'Gestreckte Arme = Nackenspannung, taube Hände',
+          },
+        },
+        sources: {
+          title: 'Quellen',
+          references: [
+            'Holmes JC, Pruitt AL, Whalen NJ. (1994). Lower extremity overuse in bicycling. Clinics in Sports Medicine.',
+            'Millour G, et al. (2020). Comparison of static and dynamic methods based on knee kinematics.',
+            'Bini RR, et al. (2011). Effects of saddle height on pedal force effectiveness.',
+            'Ferrer-Roca V, et al. (2014). Saddle height effects on pedal forces and kinematics.',
+          ],
+          disclaimer: 'Dies sind allgemeine Referenzwerte. Bei komplexen Fällen ist eine professionelle Analyse empfohlen.',
+        },
+        externalLink: {
+          text: 'Bei anhaltenden Problemen konsultiere einen',
+          linkText: 'IBFI-zertifizierten Bikefitter',
+          url: 'https://www.ibfi-certification.com/',
+        },
+      },
+    },
+
+    // Newsletter
+    newsletter: {
+      title: 'Bleib informiert',
+      subtitle: 'Erhalte unsere Rad-Tipps und neue Funktionen',
+      placeholder: 'Deine E-Mail',
+      button: 'Abonnieren',
+      promise: 'Kein Spam, versprochen. Maximal 2 E-Mails pro Monat.',
+      success: 'Danke! Du bist angemeldet.',
+      error: 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.',
+      invalid: 'Ungültige E-Mail',
+    },
+
+    // Email popup
+    emailPopup: {
+      title: 'Kostenloser lebenslanger Zugang',
+      subtitle: 'Melde dich an, um den kostenlosen Zugang zu behalten und über wichtige Updates informiert zu werden.',
+      placeholder: 'Deine E-Mail',
+      button: 'Anmelden',
+      noSpam: 'Kein Spam, nur wichtige Neuigkeiten.',
+      success: 'Danke! Du bist angemeldet.',
+      later: 'Später',
+    },
+
+    // Language modal
+    languageModal: {
+      title: 'Wähle deine Sprache',
+      subtitle: 'Wähle eine Sprache, um fortzufahren',
+    },
+
+    // Evaluation page
+    evaluation: {
+      title: 'Wähle deine Art der Analyse',
+      subtitle: 'Wähle die Art der Analyse, die zu deinen Bedürfnissen passt',
+      recommended: 'Empfohlen',
+      duration: 'Dauer',
+      choose: 'Auswählen',
+      options: {
+        quiz: {
+          title: 'Interaktiver Fragebogen',
+          description: 'Beantworte Fragen zu deiner Erfahrung, deinen Zielen und möglichen Schmerzen, um ein personalisiertes Radfahrerprofil zu erhalten.',
+          duration: '5-10 Min',
+        },
+        mobility: {
+          title: 'Mobilitätstest',
+          description: 'Bewerte deine Flexibilität und Gelenkmobilität durch geführte Übungen.',
+          duration: '5-10 Min',
+        },
+        complete: {
+          title: 'Komplette Analyse',
+          description: 'Kombiniere den Fragebogen und den Mobilitätstest für eine umfassende Analyse und genauere Empfehlungen.',
+          duration: '15-25 Min',
+        },
+      },
+      skipToAnalysis: 'Direkt zur Videoanalyse springen',
+    },
+
+    // Quiz page
+    quiz: {
+      title: 'Radfahrer-Fragebogen',
+      question: 'Frage',
+      finish: 'Fragebogen beenden',
+      autoSaved: 'Fortschritt wird automatisch gespeichert',
+    },
+
+    // Quiz questions
+    quizQuestions: {
+      experience: {
+        question: 'Wie hoch ist dein Erfahrungsniveau im Radsport?',
+        options: [
+          { value: 'beginner', label: 'Anfänger (weniger als 1 Jahr)' },
+          { value: 'intermediate', label: 'Fortgeschritten (1-3 Jahre)' },
+          { value: 'advanced', label: 'Sehr fortgeschritten (3-5 Jahre)' },
+          { value: 'expert', label: 'Experte (mehr als 5 Jahre)' },
+        ],
+      },
+      practiceType: {
+        question: 'Welche Art(en) von Radfahren betreibst du?',
+        options: [
+          { value: 'road', label: 'Rennrad' },
+          { value: 'mtb', label: 'Mountainbike' },
+          { value: 'gravel', label: 'Gravel' },
+          { value: 'urban', label: 'Stadt/Pendeln' },
+          { value: 'triathlon', label: 'Triathlon' },
+        ],
+      },
+      objectives: {
+        question: 'Was sind deine Hauptziele?',
+        options: [
+          { value: 'comfort', label: 'Komfort verbessern' },
+          { value: 'performance', label: 'Leistung verbessern' },
+          { value: 'endurance', label: 'Ausdauer steigern' },
+          { value: 'painRelief', label: 'Schmerzen reduzieren' },
+          { value: 'aerodynamics', label: 'Aerodynamik optimieren' },
+        ],
+      },
+      painPoints: {
+        question: 'Hast du während der Fahrten Schmerzen?',
+        options: [
+          { value: 'none', label: 'Keine Schmerzen' },
+          { value: 'back', label: 'Rücken' },
+          { value: 'neck', label: 'Nacken/Hals' },
+          { value: 'knees', label: 'Knie' },
+          { value: 'hands', label: 'Hände/Handgelenke' },
+          { value: 'feet', label: 'Füße' },
+          { value: 'buttocks', label: 'Gesäß/Sitzbereich' },
+          { value: 'shoulders', label: 'Schultern' },
+        ],
+      },
+      weeklyHours: {
+        question: 'Wie viele Stunden pro Woche verbringst du auf dem Rad?',
+        options: [
+          { value: 'less3', label: 'Weniger als 3h' },
+          { value: '3to5', label: '3-5h' },
+          { value: '5to10', label: '5-10h' },
+          { value: '10to15', label: '10-15h' },
+          { value: 'more15', label: 'Mehr als 15h' },
+        ],
+      },
+      height: {
+        question: 'Wie groß bist du?',
+      },
+      inseam: {
+        question: 'Wie lang ist deine Schrittlänge?',
+        hint: 'Miss den Abstand vom Boden bis zum Schritt, barfuß im Stehen.',
+      },
+    },
+
+    // Mobility test page
+    mobilityTest: {
+      title: 'Mobilitätstest',
+      test: 'Test',
+      start: 'Test starten',
+      skip: 'Diesen Test überspringen',
+      instructions: 'Anleitungen',
+      performMovement: 'Führe die Bewegung aus und bewerte deine Mobilität',
+      doMovement: 'Führe die Bewegung aus',
+      rateYourMobility: 'Wie bewertest du deine Mobilität?',
+      ratings: {
+        limited: 'Eingeschränkt',
+        average: 'Durchschnittlich',
+        good: 'Gut',
+        excellent: 'Ausgezeichnet',
+      },
+      tests: {
+        hamstring: {
+          name: 'Flexibilität der Oberschenkelrückseite',
+          description: 'Bewerte die Flexibilität der Rückseite deiner Oberschenkel',
+          instructions: [
+            'Stelle dich mit gestreckten Beinen hin',
+            'Beuge dich nach vorn und versuche, die Zehen zu berühren',
+            'Halte die Knie gestreckt',
+            'Halte die Position 5 Sekunden',
+          ],
+        },
+        hip: {
+          name: 'Hüftmobilität',
+          description: 'Teste den Bewegungsumfang deiner Hüften',
+          instructions: [
+            'Lege dich auf den Rücken',
+            'Ziehe ein Knie zur Brust',
+            'Halte das andere Bein gestreckt am Boden',
+            'Wechsle die Seiten ab',
+          ],
+        },
+        back: {
+          name: 'Rückenflexibilität',
+          description: 'Bewerte die Beweglichkeit deiner Wirbelsäule',
+          instructions: [
+            'Gehe in den Vierfüßlerstand',
+            'Wölbe den Rücken nach oben (Katzenbuckel)',
+            'Dann senke den Rücken nach unten',
+            'Wiederhole das 5-mal langsam',
+          ],
+        },
+        shoulder: {
+          name: 'Schulterrotation',
+          description: 'Teste die Beweglichkeit deiner Schultern',
+          instructions: [
+            'Hebe einen Arm über den Kopf',
+            'Beuge den Ellbogen, um deinen Rücken zu berühren',
+            'Mit der anderen Hand greifst du hinter den Rücken',
+            'Versuche, deine Hände zusammenzuführen',
+          ],
+        },
+      },
+    },
+
+    // Bike Analysis
+    bikeAnalysis: {
+      title: 'Positionsanalyse',
+      subtitle: 'Erfasse deine Position auf dem Rad für eine personalisierte Analyse',
+      // Method selection
+      methodSelectTitle: 'Positionsanalyse',
+      methodSelectDesc: 'Wähle deine Aufnahmemethode',
+      recommended: 'Empfohlen',
+      webcamOption: 'Live-Webcam',
+      webcamDesc: 'Echtzeitanalyse mit Countdown',
+      videoOption: 'Video importieren',
+      videoOptionDesc: 'Lade ein vorhandenes Video für die automatische Analyse hoch',
+      photoOption: 'Foto importieren',
+      photoOptionDesc: 'Sofortige Analyse eines Profilfotos',
+      highPrecision: 'Hohe Präzision',
+      goodPrecision: 'Gute Präzision',
+      lessPrecise: 'Weniger präzise',
+      multiFrame: 'Multi-Frame',
+      singleFrame: 'Einzelbild',
+      // Intro
+      introTitle: 'Positionsanalyse',
+      introDesc: 'Wir erfassen deine Position auf dem Rad. Wähle deine Vorbereitungszeit.',
+      howItWorks: 'So funktioniert es:',
+      step1: 'Platziere dein Telefon/Computer 2-3 m entfernt, von der Seite',
+      step2: 'Wähle die Verzögerung und klicke auf "Start"',
+      step3: 'Steig aufs Rad und tritt normal',
+      step4: 'Tritt 2 volle Umdrehungen für die Aufnahme',
+      startAnalysis: 'Analyse starten',
+      preparation: 'Vorbereitung',
+      loadingCamera: 'Kamera und Modell werden geladen...',
+      cameraReady: 'Kamera bereit! Positioniere dich und starte den Timer.',
+      positioning: 'Positionierung:',
+      positionTip1: 'Positioniere dich seitlich zur Kamera',
+      positionTip2: 'Abstand: 2-3 Meter, Kamera auf Sattelhöhe',
+      positionTip3: 'Gute Beleuchtung (kein Gegenlicht)',
+      countdownDelayLabel: 'Zeit bis zur Aufnahme:',
+      alignWithSilhouette: 'Richte dich an der Silhouette aus',
+      startTimer: 'Timer starten',
+      getReady: 'Bereit machen!',
+      mountBike: 'Steig aufs Rad und tritt',
+      capturing: 'Aufnahme läuft',
+      pedalOneCycle: 'Tritt in gleichmäßigem Tempo',
+      cycles: 'Umdrehungen',
+      results: 'Analyseergebnisse',
+      knee: 'Knie (Streckung)',
+      hip: 'Hüfte',
+      back: 'Rücken (Winkel)',
+      arm: 'Arm',
+      ideal: 'Ideal',
+      noData: 'Keine Daten erfasst',
+      redoAnalysis: 'Analyse wiederholen',
+      viewRecommendations: 'Empfehlungen ansehen',
+      // Upload options
+      orUpload: 'Oder lade dein eigenes Medium hoch:',
+      uploadPhoto: 'Foto hochladen',
+      uploadVideo: 'Video hochladen',
+      photoAnalysis: 'Fotoanalyse',
+      videoAnalysis: 'Videoanalyse',
+      selectPhoto: 'Wähle ein Foto deiner Position',
+      selectVideo: 'Wähle ein Video deines Tretens',
+      photoHint: 'Profilfoto auf dem Rad, linke Seite sichtbar',
+      videoHint: 'Video von 10-30 Sekunden, normales Pedalieren',
+      analyzing: 'Analyse läuft...',
+      analyzingFrame: 'Frame wird analysiert',
+      of: 'von',
+      noPoseDetected: 'Keine Körperhaltung erkannt. Probiere eine andere Datei.',
+      notVisible: 'Nicht sichtbar',
+      useResults: 'Diese Ergebnisse verwenden',
+      chooseDifferent: 'Andere Datei wählen',
+      dragDrop: 'Ziehen und ablegen oder klicken, um auszuwählen',
+      // Camera loading
+      loadingCameraShort: 'Kamera wird geladen...',
+      // Analysis steps
+      steps: {
+        loadingImage: 'Bild wird geladen...',
+        loadingModel: 'KI wird initialisiert...',
+        detecting: 'Körperhaltung wird erkannt...',
+        calculating: 'Winkel werden berechnet...',
+        loadingVideo: 'Video wird geladen...',
+        preparingFile: 'Datei wird vorbereitet',
+        loadingMediaPipe: 'MediaPipe-Modell wird geladen',
+        finalizing: 'Analyse wird abgeschlossen...',
+      },
+      // Angle labels
+      angleLabels: {
+        knee: 'Knie',
+        hip: 'Hüfte',
+        back: 'Rücken',
+        arm: 'Arm',
+      },
+      // Video analysis
+      framesAnalyzed: 'Frames analysiert',
+      kneeExtensionDetected: 'Kniestreckung erkannt',
+      framesWithPose: 'Frames mit erkannter Körperhaltung',
+      selectingBest: 'Beste Winkel werden ausgewählt...',
+      // PoseDetector
+      accessingCamera: 'Kamera wird geöffnet...',
+      startingVideo: 'Video wird gestartet...',
+      cameraError: 'Kamera kann nicht verwendet werden. Prüfe die Berechtigungen.',
+      retry: 'Erneut versuchen',
+      switchCamera: 'Kamera wechseln',
+    },
+
+    // Recommendations
+    recommendations: {
+      title: 'Deine personalisierten Empfehlungen',
+      basedOn: 'Basierend auf deinen Antworten im Fragebogen',
+      andAnalysis: 'und deiner Positionsanalyse',
+      summary: 'Zusammenfassung der Analyse',
+      loading: 'Empfehlungen werden erstellt...',
+      excellent: 'Ausgezeichnete Position!',
+      optimalPosition: 'Deine Position wirkt optimal. Weiter so!',
+      redoAnalysis: 'Analyse wiederholen',
+      newEvaluation: 'Neue Analyse',
+      exportPDF: 'Meinen Bericht erhalten',
+      exporting: 'Senden...',
+      exportError: 'Fehler beim Senden',
+      emailPlaceholder: 'Deine E-Mail',
+      emailSent: 'Bericht gesendet!',
+      emailSentDesc: 'Prüfe deinen Posteingang',
+      sendReport: 'Senden',
+      reportPromo: 'Erhalte deinen PDF-Bericht + Tipps für mehr Fortschritt',
+      freeForever: 'Kostenloser Zugang auf Lebenszeit garantiert, auch wenn der Dienst kostenpflichtig wird',
+      pdfRecommendations: 'Empfehlungen',
+      pdfGeneratedBy: 'Erstellt von MyBikeFitting - mybikefitting.com',
+      priority: {
+        high: 'Hohe Priorität',
+        medium: 'Mittlere Priorität',
+        low: 'Niedrige Priorität',
+      },
+      current: 'Aktuell',
+      recommended: 'Empfohlen',
+      adjustment: 'Anpassung',
+      directions: {
+        up: 'Anheben',
+        down: 'Absenken',
+        forward: 'Nach vorn',
+        backward: 'Nach hinten',
+        shorter: 'Kürzen',
+        longer: 'Verlängern',
+      },
+      photoLimitationHint: 'Für genaue cm-Anpassungen nutze die Video- oder Webcam-Analyse',
+      viewLarger: 'Größer anzeigen',
+      clickToClose: 'Zum Schließen klicken',
+      angles: {
+        knee: 'Knie',
+        hip: 'Hüfte',
+        back: 'Rücken',
+        arm: 'Arm',
+      },
+      angleStatus: {
+        optimal: 'Optimal',
+        warning: 'Anpassung nötig',
+        bad: 'Korrektur nötig',
+      },
+      adjustmentsRecommended: 'Empfohlene Anpassungen:',
+      items: {
+        saddleHeightLow: 'Sattelhöhe erhöhen',
+        saddleHeightLowDesc: 'Deine Kniestreckung ist zu gering. Ein zu niedriger Sattel kann Knieschmerzen verursachen.',
+        saddleHeightHigh: 'Sattelhöhe senken',
+        saddleHeightHighDesc: 'Deine Kniestreckung ist zu hoch. Ein zu hoher Sattel kann ein Kippen des Beckens verursachen.',
+        saddleSetback: 'Sattel-Offset anpassen',
+        saddleSetbackDesc: 'Dein Hüftwinkel ist zu geschlossen. Das kann Leistung begrenzen und Schmerzen verursachen.',
+        handlebarHeightLow: 'Lenker höher stellen',
+        handlebarHeightLowDesc: 'Deine Position ist zu aggressiv. Das kann Nacken- und Rückenschmerzen verursachen.',
+        handlebarHeightHigh: 'Lenker tiefer stellen',
+        handlebarHeightHighDesc: 'Deine Position ist zu aufrecht. Das kann die Aerodynamik verringern.',
+        stemLength: 'Vorbau zu kurz',
+        stemLengthDesc: 'Deine Arme sind zu stark gebeugt. Ziehe einen längeren Vorbau in Betracht.',
+        painKnees: 'Knieschmerzen',
+        painKneesDesc: 'Prüfe Sattelhöhe und Cleat-Position.',
+        painBack: 'Rückenschmerzen',
+        painBackDesc: 'Probiere eine aufrechtere Position. Stärke deine Rumpfmuskulatur.',
+        painNeck: 'Nackenschmerzen',
+        painNeckDesc: 'Position zu aggressiv. Lenker höher stellen.',
+        painHands: 'Taubheitsgefühl in den Händen',
+        painHandsDesc: 'Zu viel Gewicht auf den Händen. Prüfe die Lenkerneigung.',
+        painFeet: 'Fußschmerzen',
+        painFeetDesc: 'Prüfe die Cleat-Position und die Schuhbreite.',
+        beginnerPosition: 'Empfohlene Komfortposition',
+        beginnerPositionDesc: 'Als Anfänger priorisiere eine aufrechtere Position.',
+      },
+    },
+
+    // Angles (legacy)
+    angles: {
+      knee: 'Knie',
+      hip: 'Hüfte',
+      back: 'Rücken',
+      arm: 'Arm',
+    },
+
+    // Feedback
+    feedback: {
+      title: 'Deine Meinung zählt!',
+      subtitle: 'Wie war deine Analyse-Erfahrung?',
+      placeholder: 'Ein Kommentar? (optional)',
+      submit: 'Senden',
+      skip: 'Überspringen',
+      thanks: 'Danke für dein Feedback!',
+    },
+
+    // Footer
+    footer: {
+      tagline: 'Optimiere deine Sitzposition',
+      navigation: 'Navigation',
+      startEvaluation: 'Loslegen',
+      quiz: 'Fragebogen',
+      analysis: 'Analyse',
+      legal: 'Rechtliche Hinweise',
+      cgu: 'Nutzungsbedingungen',
+      privacy: 'Datenschutzerklärung',
+      mentions: 'Impressum',
+      contact: 'Kontakt',
+      rights: 'Alle Rechte vorbehalten.',
+    },
+
+    // 404 Page
+    notFound: {
+      title: 'Seite nicht gefunden',
+      message: 'Die gesuchte Seite existiert nicht oder wurde verschoben.',
+      backHome: 'Zur Startseite',
+      startEvaluation: 'Analyse starten',
+    },
+
+    // Cookies
+    cookies: {
+      message: 'Diese Website verwendet Cookies, um deine Erfahrung zu verbessern. Deine Daten bleiben auf deinem Gerät.',
+      learnMore: 'Mehr erfahren',
+      accept: 'Akzeptieren',
+      decline: 'Ablehnen',
+    },
+
+    // Legal pages
+    legal: {
+      cgu: {
+        title: 'Nutzungsbedingungen',
+        lastUpdate: 'Letzte Aktualisierung',
+        sections: {
+          acceptance: {
+            title: 'Annahme der Bedingungen',
+            content: 'Durch die Nutzung von MyBikeFitting stimmst du diesen Nutzungsbedingungen zu. Wenn du nicht einverstanden bist, nutze diesen Dienst bitte nicht.',
+          },
+          service: {
+            title: 'Beschreibung des Dienstes',
+            content: 'MyBikeFitting ist ein Tool zur Analyse der Fahrradposition mit Webcam-Körperhaltungserkennung. Der Dienst bietet personalisierte Empfehlungen basierend auf der Analyse deiner Gelenkwinkel und deiner Fragebogenantworten.',
+          },
+          usage: {
+            title: 'Nutzung des Dienstes',
+            content: 'Du verpflichtest dich, diesen Dienst nur für persönliche, nicht-kommerzielle Zwecke zu nutzen. Die Nutzung der Kamera erfordert deine ausdrückliche Zustimmung.',
+          },
+          data: {
+            title: 'Personendaten',
+            content: 'Alle deine Daten werden lokal auf deinem Gerät gespeichert (localStorage). Es werden keine Daten an unsere Server übertragen. Kamerabilder werden in Echtzeit verarbeitet und nie gespeichert.',
+          },
+          liability: {
+            title: 'Haftungsbeschränkung',
+            content: 'MyBikeFitting liefert Empfehlungen nur zu Informationszwecken. Diese ersetzen keine professionelle Bikefitting-Beratung. Wir übernehmen keine Haftung für Verletzungen, die aus der Anwendung dieser Empfehlungen entstehen.',
+          },
+          modifications: {
+            title: 'Änderungen',
+            content: 'Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen treten mit Veröffentlichung auf der Website in Kraft.',
+          },
+        },
+      },
+      privacy: {
+        title: 'Datenschutzerklärung',
+        lastUpdate: 'Letzte Aktualisierung',
+        sections: {
+          collection: {
+            title: 'Datenerhebung',
+            content: 'MyBikeFitting erfasst nur Daten, die du freiwillig angibst: Fragebogenantworten (Level, Ziele, Schmerzen) und Körpermaße (Größe, Schrittlänge).',
+          },
+          camera: {
+            title: 'Kameranutzung',
+            content: 'Der Kamerazugriff wird ausschließlich für die Echtzeit-Positionsanalyse genutzt. Bilder werden nie aufgezeichnet oder übertragen. Die Verarbeitung erfolgt vollständig auf deinem Gerät mit MediaPipe-Technologie.',
+          },
+          storage: {
+            title: 'Datenspeicherung',
+            content: 'Alle deine Daten werden lokal im localStorage deines Browsers gespeichert. Es werden keine Daten an externe Server gesendet. Du kannst diese Daten jederzeit löschen, indem du deine Browserdaten löschst.',
+          },
+          cookies: {
+            title: 'Cookies',
+            content: 'MyBikeFitting verwendet nur essentielle technische Cookies, um deine Sprachpräferenzen und die Cookie-Einwilligung zu speichern. Es werden keine Tracking- oder Werbe-Cookies verwendet.',
+          },
+          rights: {
+            title: 'Deine Rechte',
+            content: 'Nach der DSGVO hast du das Recht auf Auskunft, Berichtigung und Löschung deiner Daten. Da deine Daten lokal gespeichert werden, kannst du sie direkt in den Browsereinstellungen löschen.',
+          },
+          contact: {
+            title: 'Kontakt',
+            content: 'Bei Fragen zu deinen personenbezogenen Daten kontaktiere uns unter: contact@mybikefitting.com',
+          },
+        },
+      },
+      mentions: {
+        title: 'Impressum',
+        sections: {
+          editor: {
+            title: 'Seitenbetreiber',
+            name: 'Name',
+            status: 'Status',
+            statusValue: 'Persönliches Projekt',
+            email: 'E-Mail',
+          },
+          hosting: {
+            title: 'Hosting',
+            provider: 'Anbieter',
+            address: 'Adresse',
+          },
+          ip: {
+            title: 'Urheberrecht',
+            content: 'Alle Inhalte dieser Website (Texte, Bilder, Code) sind urheberrechtlich geschützt. Jede unerlaubte Vervielfältigung ist verboten.',
+          },
+          credits: {
+            title: 'Credits',
+            mediapipe: 'Körperhaltungserkennung: MediaPipe (Google)',
+            nextjs: 'Framework: Next.js (Vercel)',
+          },
+        },
+      },
+    },
+
+    // Errors
+    errors: {
+      cameraAccessDenied: 'Kamerazugriff verweigert. Erlaube den Zugriff in deinem Browser.',
+      noCamera: 'Keine Kamera erkannt.',
+      initError: 'Initialisierung der Erkennung fehlgeschlagen.',
+    },
+
+    // Suggestions
+    suggestions: {
+      title: 'Deine Ideen',
+      subtitle: 'Schlage Verbesserungen vor oder stimme über bestehende Ideen ab',
+      cta: 'Hast du eine Idee? Schlag sie vor!',
+      newIdea: 'Idee vorschlagen',
+      ideaTitle: 'Titel deiner Idee',
+      ideaDescription: 'Beschreibung (optional)',
+      yourEmail: 'Deine E-Mail',
+      submit: 'Senden',
+      submitting: 'Wird gesendet...',
+      success: 'Danke für deinen Vorschlag!',
+      error: 'Ein Fehler ist aufgetreten',
+      vote: 'Abstimmen',
+      votes: 'Stimmen',
+      noSuggestions: 'Noch keine Vorschläge. Sei der Erste!',
+      emailHint: 'Damit wir dich über den Fortschritt informieren können',
+      status: {
+        pending: 'Ausstehend',
+        planned: 'Geplant',
+        inProgress: 'In Arbeit',
+        done: 'Erledigt',
+      },
+    },
+
+    // Cleat positioning
+    cleatPositioning: {
+      title: 'Cleat-Positionierung',
+      subtitle: 'Leitfaden zum korrekten Positionieren deiner Schuhcleats',
+      intro: 'Eine korrekte Cleat-Positionierung ist entscheidend, um Knieschmerzen zu vermeiden und dein Pedalieren zu optimieren.',
+      steps: {
+        step1: {
+          title: 'Finde den Ballen deines Fußes',
+          description: 'Der erste Mittelfußkopf (Ballen) sollte über der Pedalachse liegen. Markiere diesen Punkt an der Seite deines Schuhs.',
+        },
+        step2: {
+          title: 'Cleat vorne/hinten positionieren',
+          description: 'Richte die Mitte des Cleats an der Markierung aus. Wenn du vordere Knieschmerzen hast, schiebe das Cleat leicht nach hinten.',
+        },
+        step3: {
+          title: 'Rotation anpassen',
+          description: 'Setz dich hin und lass deine Füße natürlich hängen. Das Cleat sollte diese natürliche Ausrichtung ermöglichen.',
+        },
+        step4: {
+          title: 'Medial/lateral Position',
+          description: 'Deine Knie sollten beim Pedalieren ausgerichtet bleiben. Wenn deine Knie nach außen wandern, schiebe die Cleats näher an die Innenkante des Schuhs.',
+        },
+      },
+      tips: {
+        title: 'Wichtige Tipps',
+        tip1: 'Ziehe die Schrauben schrittweise und gleichmäßig an',
+        tip2: 'Mache nach jeder Anpassung eine kurze Probefahrt',
+        tip3: 'In kleinen Schritten anpassen (max. 2-3 mm)',
+        tip4: 'Beschwerden können sich erst nach mehreren Fahrten zeigen',
+      },
+      painGuide: {
+        title: 'Schmerzleitfaden',
+        frontKnee: {
+          title: 'Vordere Knieschmerzen',
+          solution: 'Cleat zu weit vorne → Cleat nach hinten',
+        },
+        backKnee: {
+          title: 'Hintere Knieschmerzen',
+          solution: 'Cleat zu weit hinten → Cleat nach vorne',
+        },
+        insideKnee: {
+          title: 'Innere Knieschmerzen',
+          solution: 'Fuß zu weit nach außen → Cleat nach innen drehen',
+        },
+        outsideKnee: {
+          title: 'Äußere Knieschmerzen',
+          solution: 'Fuß zu weit nach innen → Cleat nach außen drehen',
+        },
+      },
+      backToResults: 'Zurück zu den Ergebnissen',
+    },
+  },
+
+
   es: {
     // Common
     loading: 'Cargando...',
@@ -2385,7 +3172,7 @@ function detectBrowserLanguage(): Language {
   if (browserLang.startsWith('fr')) return 'fr';
   if (browserLang.startsWith('es')) return 'es';
   if (browserLang.startsWith('en')) return 'en';
-
+  if (browserLang.startsWith('de')) return 'de';
   // Default to French
   return 'fr';
 }
@@ -2415,7 +3202,7 @@ export function I18nProvider({ children, initialLang }: I18nProviderProps) {
     trackLanguageChange(oldLang, newLang);
     // Redirect to new language URL
     const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(fr|en|es)/, '');
+    const pathWithoutLang = currentPath.replace(/^\/(fr|en|es|de)/, '');
     window.location.href = `/${newLang}${pathWithoutLang || '/'}`;
   };
 
@@ -2438,6 +3225,14 @@ const languageFlags: Record<Language, string> = {
   fr: '🇫🇷',
   en: '🇺🇸',
   es: '🇪🇸',
+  de: '🇩🇪',
+};
+
+const languageNames: Record<Language, string> = {
+  fr: 'Français',
+  en: 'English',
+  es: 'Español',
+  de: 'Deutsch',
 };
 
 export function LanguageSelector() {
@@ -2445,12 +3240,12 @@ export function LanguageSelector() {
 
   return (
     <div className="flex gap-1 sm:gap-2">
-      {(['fr', 'en', 'es'] as Language[]).map((l) => (
+      {(['fr', 'en', 'es', 'de'] as Language[]).map((l) => (
         <button
           key={l}
           type="button"
           onClick={() => setLang(l)}
-          title={l === 'fr' ? 'Français' : l === 'en' ? 'English' : 'Español'}
+          title={languageNames[l]}
           className={`px-2 py-1 sm:px-3 sm:py-1.5 text-base sm:text-lg rounded-lg transition-all cursor-pointer ${
             lang === l
               ? 'bg-amber-100 ring-2 ring-amber-500 scale-110'
